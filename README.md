@@ -18,8 +18,7 @@ chmod +x portscanner.sh <--- Use This Command TO Give Executable Premissions
 <p></p>
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-You Can Make txt Files That Contain Ports That You Can Choose To Scan,
-See Example CustomPorts.txt To See How To Make Your Own Or Just Use Mine
+You Can Make txt Files That Contain Ports That You Can Choose To Scan
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 <img src="kanax01.png">
