@@ -1,28 +1,52 @@
-<h1 align="center"> READ THIS </h1>
-<p>-- Kanax01</p>
-<h3 align="center"> Info & Disclaimer </h3>
-<p>
+# Ethical Use Policy & Disclaimer
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
------------------------------------------------------------------------------------------------------------
-Please use this tool responsibly and ethically. Unauthorized scanning of networks is illegal and unethical.
-Ensure you have explicit permission to scan any network or system. I, Kanax01 am not responsible for any
-misuse of this tool or any trouble you get your self into so becareful.
+## ⚠️ IMPORTANT LEGAL DISCLAIMER
 
-This tool uses the GPL 3.0 License.
-For more information, please refer to the LICENSE file included with this project.
-You can also visit https://www.gnu.org/licenses/gpl-3.0.en.html for more details.
+This tool is designed for **EDUCATIONAL PURPOSES** and **AUTHORIZED SECURITY TESTING** only. The developers are not responsible for any misuse of this software.
 
-This project uses the Bash language standard version.
-This project is open-source and contributions are welcome.
-Please fork the repository and submit a pull request for any enhancements or bug fixes.
+## 🛡️ Permitted Uses
 
-You can reach me at:
-GitHub: github.com/Kanax01
-Gmail: 66stuff88@gmail.com
-Discord: github.com/users/kanax01
-Enjoy -- Kanax01
------------------------------------------------------------------------------------------------------------
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+✅ **Authorized Activities:**
+- Testing your own systems and networks
+- Educational environments and cybersecurity courses
+- Penetration testing with explicit written permission
+- Security research on systems you own
+- CTF (Capture The Flag) competitions
+- Vulnerability assessments with proper authorization
 
-<p></p>
+## 🚫 Prohibited Uses
+
+❌ **Strictly Forbidden:**
+- Scanning systems without explicit permission
+- Unauthorized penetration testing
+- Network reconnaissance without authorization
+- Any illegal hacking activities
+- Disrupting services or causing downtime
+- Violating computer fraud laws
+- Malicious attacks on any systems
+
+## ⚖️ Legal Notice
+
+- **Unauthorized scanning may be illegal** in your jurisdiction
+- Many countries have computer misuse laws (CFAA, Computer Misuse Act, etc.)
+- Always obtain **written permission** before scanning any network
+- You are solely responsible for ensuring your activities are legal
+- Educational purpose does not grant immunity from prosecution
+
+## 🔒 Responsible Disclosure
+
+If you discover vulnerabilities:
+1. Do not exploit them without permission
+2. Follow responsible disclosure practices
+3. Contact the system owners through proper channels
+4. Never access or modify data without authorization
+
+## 📜 License Agreement
+
+By using this software, you agree to:
+- Use it only for legal and ethical purposes
+- Accept full responsibility for your actions
+- Not hold the developers liable for any misuse
+- Comply with all applicable laws and regulations
+
+---
