@@ -3,6 +3,8 @@
 #Simple Port Scanner In Bash
 #Made By Kanax01
 
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 icon="  ____            _       ____            _   
  | __ )  __ _ ___| |__   |  _ \ ___  _ __| |_ 
  |  _ \ / _\` / __| '_ \  | |_) / _ \| '__| __|
@@ -16,11 +18,9 @@ icon="  ____            _       ____            _
 
 #Variables
 
-livePorts=""
+livePorts=()
 empty=""
-possiblePorts=65536
 iperror=""  #This is for the IP validator
-customports=""
 
 echo "$(clear)"
 echo "$icon"
@@ -40,7 +40,7 @@ if [[ $start == "n" ]]; then
       exit
 fi
 
-echo "Enter Target IP Adress"
+echo "Enter Target IP Address"
 read ip
 
 #ip validator
@@ -60,6 +60,9 @@ fi
 echo "$(clear)"
 echo "$icon"
 
+
+
+#<---------------Options Menu--------------->
 echo "Enter Port Option:
 1) Fast Scan (Common Ports)
 2) Custom Range
@@ -73,53 +76,74 @@ echo "$icon"
 
 if [[ $portopt == "1" ]]; then
     echo "Scanning Common Ports On $ip"
-    commonPorts= "20,21,22,23,25,53,67,68,69,80,110,111,123,135,137,138,139,143,161,162,443,445,500,514,520,631,993,995,1434,1723,1900,3306,3389,4500,5900,8080,49152"
-    currentPortNum = "20"
-    #until [[ currentPortNum = 49152 ]] do
-    #done
+    commonPorts=(20 21 22 23 25 53 67 68 69 80 110 111 123 135 137 138 139 143 161 162 443 445 500 514 520 631 993 995 1434 1723 1900 3306 3389 4500 5900 8080 49152)
+    
+    for port in "${commonPorts[@]}"; do
+        if (echo > /dev/tcp/$ip/$port) 2>/dev/null; then
+            livePorts+=("$port")
+            echo "Port $port is OPEN"
+        fi
+    done
 fi
+
 if [[ $portopt == "2" ]]; then
     echo "Enter First Port Number"
     read num1
-    if [[ $num1 == $empty || $num1 < 1 ]]; then
+    if [[ $num1 == $empty || $num1 -lt 1 ]]; then
         echo "Please Enter Valid Port Number"
         exit
     fi
     echo "Enter Second Port Number"
     read num2
-    if [[ $num2 == $empty || $num2 > 65536 ]]; then
+    if [[ $num2 == $empty || $num2 -gt 65536 ]]; then
         echo "Please Enter Valid Port Number"
         exit
     fi
-    echo "Starting Port Scan On $ip On Range $num1 < $num2"
+    echo "Starting Port Scan On $ip On Range $num1 - $num2"
 
-
-    currentPortNum=num1
-    until [[ $num1 -eq $num2 ]]; do
-        echo "$(ping $ip:$currentPortNum)"
-        ((currentPortNum++))
+    for ((currentPortNum=num1; currentPortNum<=num2; currentPortNum++)); do
+        if (echo > /dev/tcp/$ip/$currentPortNum) 2>/dev/null; then
+            livePorts+=("$currentPortNum")
+            echo "Port $currentPortNum is OPEN"
+        fi
     done
-    echo "Scan Done"
-    
-
 fi
 
 if [[ $portopt == "3" ]]; then
     echo "Enter Path To File:"
     read path
-    echo "$(cat $path)"
-
-    until [[ $currentPortNum == $lastNum ]]; do
-        echo "$(ping $ip:$currentPortNum)"
-        ((currentPortNum ++)) # check to make sure this is right <--------------
-    done
+    if [[ ! -f "$path" ]]; then
+        echo "File not found!"
+        exit
+    fi
+    
+    while IFS= read -r port; do
+        if (echo > /dev/tcp/$ip/$port) 2>/dev/null; then
+            livePorts+=("$port")
+            echo "Port $port is OPEN"
+        fi
+    done < "$path"
 fi
+
 if [[ $portopt == "4" ]]; then
     echo "Starting Full Port Sweep On $ip"
-    currentPortNum=1
-    until [[ $currentPortNum == $possiblePorts ]]; do
-        echo "$(ping $ip:$currentPortNum)"
-        ((currentPortNum++))
+    for ((currentPortNum=1; currentPortNum<=65535; currentPortNum++)); do
+        if (echo > /dev/tcp/$ip/$currentPortNum) 2>/dev/null; then
+            livePorts+=("$currentPortNum")
+            echo "Port $currentPortNum is OPEN"
+        fi
     done
-
 fi
+
+#Port Display Menu After Scan
+echo "-----------------------------------"
+echo "Open Ports On $ip:"
+for port in "${livePorts[@]}"; do
+    echo "Port $port"
+done
+echo "Total open ports: ${#livePorts[@]}"
+
+echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+exit
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
