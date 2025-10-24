@@ -25,7 +25,7 @@ iperror=""  #This is for the IP validator
 echo "$(clear)"
 echo "$icon"
 echo "Welcome To My Port Scanner In Bash"
-echo "Please Use This Tool Ethicly And Legally"
+echo "Please Use This Tool Ethicly And Legally" #<------ Very Imporant
 
 echo "-----------------------------------------------"
 
@@ -134,7 +134,8 @@ if [[ $portopt == "4" ]]; then
         fi
     done
 fi
-
+echo "$icon"
+clear
 #Port Display Menu After Scan
 echo "-----------------------------------"
 echo "Open Ports On $ip:"
